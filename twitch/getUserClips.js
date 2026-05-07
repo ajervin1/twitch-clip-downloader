@@ -56,4 +56,3 @@ export async function getUserClips(channelLogin = "stpeach", filter = "LAST_WEEK
     return {clips, pageInfo}
 }
 
-const clips = await getUserClips("stpeach", "LAST_WEEK");

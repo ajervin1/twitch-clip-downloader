@@ -15,7 +15,7 @@ const CHAT_ID = "@pokimane_clips";
  * @param {string} filePath - Path to the mp4 file.
  * @param {string} caption - Text to display with the video.
  */
-async function sendVideo(filePath, caption) {
+export async function sendVideo(filePath, caption) {
     console.log(`📤 Sending video to ${CHAT_ID}...`);
     const stream = fs.createReadStream(filePath);
     return await bot.sendVideo(CHAT_ID, stream, {
