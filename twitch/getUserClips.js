@@ -42,7 +42,6 @@ export async function getUserClips(channelLogin = "stpeach", filter = "LAST_WEEK
             }
         }),
     });
-
     const data = await response.json();
 
     // Map the complex GraphQL response into a simple array of clip objects
@@ -55,4 +54,19 @@ export async function getUserClips(channelLogin = "stpeach", filter = "LAST_WEEK
     const pageInfo = data.data.user.clips.pageInfo;
     return {clips, pageInfo}
 }
+
+export async function getAllUserClips(channelLogin = "stpeach", filter = "LAST_WEEK", limit = 3) {
+    let hasNextPage = false;
+    let allClips = [];
+    let cursor = null;
+    do {
+        const {clips, pageInfo} = await getUserClips(channelLogin, filter, limit, cursor);
+        hasNextPage = pageInfo.hasNextPage;
+        cursor = pageInfo.endCursor;
+        allClips.push(...clips);
+
+    } while (hasNextPage)
+    return allClips
+}
+
 

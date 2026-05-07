@@ -1,11 +1,12 @@
 import fs from "fs";
+import {SAVED_CLIPS_FILE} from "../config.js";
 
 /**
  * Load clips from disk once
  */
 export function loadSavedClips() {
     return JSON.parse(
-        fs.readFileSync(FILE_NAME, "utf-8")
+        fs.readFileSync(SAVED_CLIPS_FILE, "utf-8")
     );
 }
 
@@ -14,7 +15,7 @@ export function loadSavedClips() {
  */
 export function saveSavedClips(savedClips) {
     fs.writeFileSync(
-        FILE_NAME,
+        SAVED_CLIPS_FILE,
         JSON.stringify(savedClips, null, 2)
     );
 }
@@ -46,4 +47,5 @@ export function saveClip(savedClips, clip) {
             new Date(b.createdAt) -
             new Date(a.createdAt)
     );
+
 }

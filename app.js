@@ -4,13 +4,13 @@ import {sendVideo} from "./telegram/sendVideo.js";
 import {loadSavedClips, saveClip, saveSavedClips} from "./utility/fileManager.js";
 
 export const CHANNEL = "stpeach";
-export const CLIP_FILTER = "LAST_WEEK";
-export const CLIP_LIMIT = 15;
+export const CLIP_FILTER = "LAST_MONTH";
+export const CLIP_LIMIT = 100;
 import fs from "fs";
 
 async function main() {
     const savedClips = loadSavedClips();
-    const {clips} = await getUserClips(
+    const {clips, pageInfo} = await getUserClips(
         CHANNEL,
         CLIP_FILTER,
         CLIP_LIMIT
