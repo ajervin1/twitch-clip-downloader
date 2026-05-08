@@ -1,9 +1,7 @@
 import TelegramBot from "node-telegram-bot-api";
 import fs from "fs";
-import dotenv from "dotenv";
+import {TELEGRAM_TOKEN} from "../config.js";
 
-dotenv.config();
-const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
 process.env.NTBA_FIX_350 = true;
 const bot = new TelegramBot(TELEGRAM_TOKEN, {
     polling: false,
@@ -17,10 +15,16 @@ const CHAT_ID = "@pokimane_clips";
  */
 export async function sendVideo(filePath, caption) {
     console.log(`📤 Sending video to ${CHAT_ID}...`);
+
     const stream = fs.createReadStream(filePath);
-    return await bot.sendVideo(CHAT_ID, stream, {
-        caption: caption,
+
+    const result = await bot.sendVideo(CHAT_ID, stream, {
+        caption,
         supports_streaming: true,
     });
+
+    console.log("✅ Video sent");
+
+    return result;
 }
 

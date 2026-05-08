@@ -7,7 +7,7 @@ import {DOWNLOAD_DIR} from "../config.js";
 /**
  * Downloads a Twitch clip to disk using streams for efficiency.
  */
-export async function downloadClip(clip) {
+export async function downloadClipStream(clip) {
     if (!fs.existsSync(DOWNLOAD_DIR)) {
         fs.mkdirSync(DOWNLOAD_DIR);
     }

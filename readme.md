@@ -70,11 +70,11 @@ integrated support for sending clips to a Telegram channel.
 
 ## TODO
 
-- [ ] Clone repository to aws account
+- [x] Clone repository to aws account
 - [ ] Implement auto run on ec2 server via node-cron or cron job
 - [ ] Create `core` folder for code that orchestrates the application flow
 - [ ] Add error handling with try/catch blocks
-- [ ] Implement logging system for debugging and monitoring
+- [ ] Implement logging system for debugging and monitoring, implement discord
 - [x] Add `.env.example` file with required environment variables
 - [ ] Add Pagination support for Twitch API requests
 - [ ] 

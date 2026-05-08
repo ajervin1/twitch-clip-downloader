@@ -30,7 +30,6 @@ export function saveClip(savedClips, clip) {
         " " +
         date.toLocaleTimeString();
 
-    console.log("Saving clip");
 
     savedClips.push({
         id: clip.id,
@@ -42,10 +41,14 @@ export function saveClip(savedClips, clip) {
     });
 
     // newest first
-    savedClips.sort(
-        (a, b) =>
-            new Date(b.createdAt) -
-            new Date(a.createdAt)
+    savedClips.sort((a, b) =>
+        new Date(b.createdAt) -
+        new Date(a.createdAt)
+    );
+    // Sync to disk immediately
+    fs.writeFileSync(
+        SAVED_CLIPS_FILE,
+        JSON.stringify(savedClips, null, 2)
     );
 
 }
