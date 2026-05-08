@@ -1,4 +1,3 @@
-import dotenv from "dotenv";
 import {DISCORD_CHANNEL_ID, DISCORD_TOKEN} from "../config.js";
 
 export async function sendMessage(content) {

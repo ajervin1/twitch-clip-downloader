@@ -1,7 +1,7 @@
 import {downloadClip} from "../utility/downloadClip.js";
-import {sendVideo} from "../telegram/sendVideo.js";
 import {saveClip} from "../utility/fileManager.js";
 import fs from "fs";
+import {sendVideo} from "../telegram/sendVideo.js";
 
 /**
  * Processes a list of clips: downloads, sends to Telegram, and saves to database.
