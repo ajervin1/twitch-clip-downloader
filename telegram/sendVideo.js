@@ -6,6 +6,7 @@ process.env.NTBA_FIX_350 = true;
 const bot = new TelegramBot(TELEGRAM_TOKEN, {
     polling: false,
 });
+// const CHAT_ID = "@stpeachclips";
 const CHAT_ID = "@pokimane_clips";
 
 /**
@@ -24,7 +25,7 @@ export async function sendVideo(filePath, caption) {
     });
 
     console.log("✅ Video sent");
-
+    console.log()
     return result;
 }
 

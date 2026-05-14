@@ -17,3 +17,4 @@ export async function sendMessage(content) {
 
     return await res.json();
 }
+

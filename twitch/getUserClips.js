@@ -2,7 +2,7 @@ const TWITCH_CLIENT_ID = 'kd1unb4b3q4t58fwlpcbzcbnm76a8fp'; // Your Twitch Clien
 import {buildSignedUrl} from "./buildSignedUrl.js";
 
 /** Fetches the latest clips for a given channel using the Twitch GQL API. */
-export async function getUserClips(channelLogin = "stpeach", filter = "LAST_WEEK", limit = 3, cursor = null) {
+export async function getUserClips(channelLogin = "stpeach", filter = "LAST_WEEK", limit = 100, cursor = null) {
     // Filter options: ALL_TIME, LAST_DAY, LAST_WEEK, LAST_MONTH
     const query = `
     query ($login: String!, $after: Cursor, $filter: ClipsFilter, $limit: Int!) {
@@ -54,6 +54,7 @@ export async function getUserClips(channelLogin = "stpeach", filter = "LAST_WEEK
     const pageInfo = data.data.user.clips.pageInfo;
     return {clips, pageInfo}
 }
+
 
 export async function getAllUserClips(channelLogin = "stpeach", filter = "LAST_WEEK", limit = 3) {
     let hasNextPage = false;
